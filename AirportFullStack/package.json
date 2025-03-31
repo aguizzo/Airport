@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.1",
     "@mui/material": "^7.0.1",
     "@polymer/polymer": "3.5.2",
     "@vaadin/bundles": "24.7.1",
@@ -127,7 +128,7 @@
       "workbox-core": "7.3.0",
       "workbox-precaching": "7.3.0"
     },
-    "hash": "fd301585ecceeb850506a51b3c0b5618c4bdf71ee8dea275812496f441505606"
+    "hash": "7d7be2a65d080c9c45d3128b41dac2d24f51682a7ecab14997903b201d17e086"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
@@ -169,6 +170,7 @@
     "react-router": "$react-router",
     "@emotion/react": "$@emotion/react",
     "@emotion/styled": "$@emotion/styled",
-    "@mui/material": "$@mui/material"
+    "@mui/material": "$@mui/material",
+    "@mui/icons-material": "$@mui/icons-material"
   }
 }
