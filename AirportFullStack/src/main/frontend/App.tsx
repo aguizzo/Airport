@@ -1,9 +1,8 @@
-import Home from './pages/Home';
-import Airports from './pages/Airports';
+import AppRoutes from './routes/AppRoutes';
 
 const App = () => {
    return(
-      <Airports />
+      <AppRoutes />
    )
 }
 
