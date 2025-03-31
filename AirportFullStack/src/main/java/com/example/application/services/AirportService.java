@@ -21,5 +21,7 @@ public class AirportService {
         return airportRepository.findAll();
     }
 
-
+    public void deleteById(Long id) {
+        airportRepository.deleteById(id);
+    }
 }

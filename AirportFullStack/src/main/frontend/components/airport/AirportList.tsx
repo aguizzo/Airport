@@ -26,6 +26,11 @@ const AirportList = () => {
         fetchAirports();
      },[]);
 
+    const deleteAirport = async (id: number) => {
+        await AirportService.deleteById(id);
+        setAirports(airports.filter(airport => airport.id !== id));
+    }
+
     return(
         <>
         <Typography variant="h1" align="center">
@@ -61,7 +66,7 @@ const AirportList = () => {
                       <Button color="primary" onClick={() => console.log("update")}>
                         Update
                       </Button>
-                      <Button color="secondary" onClick={() => console.log("delete")}>
+                      <Button color="secondary" onClick={() => deleteAirport(airport.id)}>
                         Delete
                       </Button>
                     </TableCell>
