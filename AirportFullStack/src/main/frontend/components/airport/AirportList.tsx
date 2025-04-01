@@ -11,12 +11,13 @@ import {
 } from "@mui/material";
 
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router";
 import { AirportService } from 'Frontend/generated/endpoints';
 import Airport from "Frontend/generated/com/example/application/model/Airport";
 
 const AirportList = () => {
     const [airports, setAirports] = useState<Airport[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchAirports = async () => {
@@ -39,7 +40,7 @@ const AirportList = () => {
         <Button
                 variant="contained"
                 color="primary"
-                onClick={() => console.log("create")}
+                onClick={() => navigate("/airports/new")}
                 style={{ marginBottom: "20px" }}
         >
             Create Airport

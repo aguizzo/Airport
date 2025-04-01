@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Sidebar from "../layout/Sidebar";
 import Home from "../pages/Home";
 import Airports from "../pages/Airports";
+import AirportForm from "../components/airport/AirportForm";
 
 const AppRoutes = () => {
     return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/airports" element={<Airports />} />
+                        <Route path="/airports/new" element={<AirportForm />} />
                     </Routes>
                 </div>
             </div>
