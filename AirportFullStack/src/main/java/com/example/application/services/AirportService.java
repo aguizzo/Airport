@@ -26,13 +26,6 @@ public class AirportService {
     }
 
     public Airport save(Airport airport) {
-        try {
-            Airport savedAirport = airportRepository.save(airport);
-            return savedAirport;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return airportRepository.save(airport);
     }
 }
