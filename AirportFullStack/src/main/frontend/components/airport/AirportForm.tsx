@@ -13,12 +13,11 @@ import {
 
 
 import { AirportService } from 'Frontend/generated/endpoints';
-import Airport from "Frontend/generated/com/example/application/model/Airport";
+import AirportDto from "Frontend/generated/com/example/application/model/AirportDto";
 
 const AirportForm = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState<Airport>({
-        id: 0,
+    const [formData, setFormData] = useState<AirportDto>({
         name: '',
         code: '',
         city: '',
@@ -33,9 +32,8 @@ const AirportForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            console.log(formData)
             const response = await AirportService.save(formData);
-            //navigate('/airports');
+            navigate('/airports');
         } catch (error) {
             console.error(error);
         }

@@ -16,7 +16,7 @@ public class Airport {
 
     @Id
     @Nonnull
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Nonnull
     private String name;
@@ -26,4 +26,18 @@ public class Airport {
     private String city;
     @Nonnull
     private String country;
+
+    public Airport(String name, String code, String city, String country) {
+        this.name = name;
+        this.code = code;
+        this.city = city;
+        this.country = country;
+    }
+
+    public static Airport fromDto(AirportDto airportDto) {
+        return new Airport(airportDto.name(),
+                airportDto.code(),
+                airportDto.city(),
+                airportDto.country());
+    }
 }
