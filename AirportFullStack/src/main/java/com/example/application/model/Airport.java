@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class Airport {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Nonnull // For TypeScript, otherwise it will be type of number | undefined
+    @Nonnull
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Nonnull
     private String name;

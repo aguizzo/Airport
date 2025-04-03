@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 @BrowserCallable
 @AnonymousAllowed
 public class AirportService {
@@ -23,5 +23,16 @@ public class AirportService {
 
     public void deleteById(Long id) {
         airportRepository.deleteById(id);
+    }
+
+    public Airport save(Airport airport) {
+        try {
+            Airport savedAirport = airportRepository.save(airport);
+            return savedAirport;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
