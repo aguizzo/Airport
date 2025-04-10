@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams, useLocation } from 'react-router';
 import {
   Paper,
   TextField,
@@ -13,16 +13,33 @@ import {
 
 
 import { AirportService } from 'Frontend/generated/endpoints';
+import Airport from "Frontend/generated/com/example/application/model/Airport";
 import AirportDto from "Frontend/generated/com/example/application/model/AirportDto";
 
 const AirportForm = () => {
+    const { id } = useParams();
+    const { airport } = useLocation().state || {};
+    const isEdit = id !== undefined;
+    const initFormData = () => {
+        if (airport) {
+            const { name, code, city, country } = airport;
+            return {
+                name: name,
+                code: code,
+                city :city,
+                country:country
+            };
+        } else {
+            return {
+                    name: "",
+                    code: "",
+                    city: "",
+                    country: "",
+            };
+        }
+    }
+    const [formData, setFormData] = useState<AirportDto>(initFormData);
     const navigate = useNavigate();
-    const [formData, setFormData] = useState<AirportDto>({
-        name: '',
-        code: '',
-        city: '',
-        country: ''
-    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -31,11 +48,17 @@ const AirportForm = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            const response = await AirportService.save(formData);
-            navigate('/airports');
-        } catch (error) {
-            console.error(error);
+        if (!isEdit) {
+            try {
+                const response = await AirportService.save(formData);
+                navigate('/airports');
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        else {
+            // placeholder
+            console.log(id)
         }
     };
 

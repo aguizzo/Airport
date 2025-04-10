@@ -64,7 +64,7 @@ const AirportList = () => {
                     <TableCell>{airport.city}</TableCell>
                     <TableCell>{airport.country}</TableCell>
                     <TableCell>
-                      <Button color="primary" onClick={() => console.log("update")}>
+                      <Button color="primary" onClick={() => navigate(`/airports/${airport.id}/edit`, { state: { airport }})}>
                         Update
                       </Button>
                       <Button color="secondary" onClick={() => deleteAirport(airport.id)}>
