@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @BrowserCallable
@@ -33,5 +34,20 @@ public class AirportService {
     public Airport save(AirportDto airportDto) {
         Airport airport = Airport.fromDto(airportDto);
         return airportRepository.save(airport);
+    }
+
+    public Airport update(AirportDto airportDto, String id) {
+        Optional<Airport> airport = airportRepository.findById(id);
+        if (airport.isPresent()) {
+            Airport updatedAirport = airport.get();
+            updatedAirport.setName(airportDto.name());
+            updatedAirport.setCode(airportDto.code());
+            updatedAirport.setCity(airportDto.city());
+            updatedAirport.setCountry(airportDto.country());
+            return airportRepository.save(updatedAirport);
+        }
+        else {
+            return save(airportDto);
+        }
     }
 }

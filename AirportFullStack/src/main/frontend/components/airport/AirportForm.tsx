@@ -57,8 +57,13 @@ const AirportForm = () => {
             }
         }
         else {
-            // placeholder
-            console.log(id)
+            try{
+                const response = await AirportService.update(formData, id);
+                navigate('/airports');
+            }
+            catch(error){
+                console.error(error);
+            }
         }
     };
 
