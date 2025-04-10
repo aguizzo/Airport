@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 @BrowserCallable
 @AnonymousAllowed
-public class AirportService {
+public class AirportEndpointService {
 
     @Autowired
     private AirportRepository airportRepository;

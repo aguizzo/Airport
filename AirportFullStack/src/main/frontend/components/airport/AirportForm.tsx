@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 
 
-import { AirportService } from 'Frontend/generated/endpoints';
+import { AirportEndpointService } from 'Frontend/generated/endpoints';
 import Airport from "Frontend/generated/com/example/application/model/Airport";
 import AirportDto from "Frontend/generated/com/example/application/model/AirportDto";
 
@@ -50,7 +50,7 @@ const AirportForm = () => {
         e.preventDefault();
         if (!isEdit) {
             try {
-                const response = await AirportService.save(formData);
+                const response = await AirportEndpointService.save(formData);
                 navigate('/airports');
             } catch (error) {
                 console.error(error);
@@ -58,7 +58,7 @@ const AirportForm = () => {
         }
         else {
             try{
-                const response = await AirportService.update(formData, id);
+                const response = await AirportEndpointService.update(formData, id);
                 navigate('/airports');
             }
             catch(error){

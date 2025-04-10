@@ -12,7 +12,7 @@ import {
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { AirportService } from 'Frontend/generated/endpoints';
+import { AirportEndpointService } from 'Frontend/generated/endpoints';
 import Airport from "Frontend/generated/com/example/application/model/Airport";
 
 const AirportList = () => {
@@ -21,14 +21,14 @@ const AirportList = () => {
 
     useEffect(() => {
         const fetchAirports = async () => {
-            const data = await AirportService.findAll();
+            const data = await AirportEndpointService.findAll();
             setAirports(data);
         }
         fetchAirports();
      },[]);
 
     const deleteAirport = async (id: string) => {
-        await AirportService.deleteById(id);
+        await AirportEndpointService.deleteById(id);
         setAirports(airports.filter(airport => airport.id !== id));
     }
 
