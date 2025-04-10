@@ -26,7 +26,7 @@ public class AirportService {
         return airportRepository.findBy();
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         airportRepository.deleteById(id);
     }
 

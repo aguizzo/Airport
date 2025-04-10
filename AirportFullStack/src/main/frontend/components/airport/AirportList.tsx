@@ -27,7 +27,7 @@ const AirportList = () => {
         fetchAirports();
      },[]);
 
-    const deleteAirport = async (id: number) => {
+    const deleteAirport = async (id: string) => {
         await AirportService.deleteById(id);
         setAirports(airports.filter(airport => airport.id !== id));
     }
