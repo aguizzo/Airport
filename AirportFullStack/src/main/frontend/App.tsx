@@ -1,8 +1,11 @@
 import AppRoutes from './routes/AppRoutes';
+import { AppServicesProvider } from './middleware/AppServicesContext';
 
 const App = () => {
    return(
-      <AppRoutes />
+       <AppServicesProvider>
+        <AppRoutes />
+       </AppServicesProvider>
    )
 }
 

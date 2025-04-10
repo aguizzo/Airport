@@ -12,11 +12,12 @@ import {
 } from '@mui/material'
 
 
-import { AirportEndpointService } from 'Frontend/generated/endpoints';
+import { useAppServicesContext } from "../../middleware/AppServicesContext";
 import Airport from "Frontend/generated/com/example/application/model/Airport";
 import AirportDto from "Frontend/generated/com/example/application/model/AirportDto";
 
 const AirportForm = () => {
+    const airportService = useAppServicesContext();
     const { id } = useParams();
     const { airport } = useLocation().state || {};
     const isEdit = id !== undefined;
@@ -50,7 +51,7 @@ const AirportForm = () => {
         e.preventDefault();
         if (!isEdit) {
             try {
-                const response = await AirportEndpointService.save(formData);
+                const response = await airportService.createAirport(formData);
                 navigate('/airports');
             } catch (error) {
                 console.error(error);
@@ -58,7 +59,7 @@ const AirportForm = () => {
         }
         else {
             try{
-                const response = await AirportEndpointService.update(formData, id);
+                const response = await airportService.updateAirport(formData, id);
                 navigate('/airports');
             }
             catch(error){
@@ -111,7 +112,7 @@ const AirportForm = () => {
             />
             <Container>
                   <Box display="flex" justifyContent="center" gap={2}>
-                    <Button type ="submit" variant="contained" color="primary">Create Airport</Button>
+                    <Button type ="submit" variant="contained" color="primary">{isEdit ? 'Update Airport' : 'Create Airport'}</Button>
                     <Button variant="contained" color="warning" onClick={() => navigate('/airports')}>Cancel</Button>
                   </Box>
             </Container>

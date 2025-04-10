@@ -12,23 +12,24 @@ import {
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { AirportEndpointService } from 'Frontend/generated/endpoints';
+import { useAppServicesContext } from "../../middleware/AppServicesContext";
 import Airport from "Frontend/generated/com/example/application/model/Airport";
 
 const AirportList = () => {
     const [airports, setAirports] = useState<Airport[]>([]);
     const navigate = useNavigate();
+    const airportService = useAppServicesContext();
 
     useEffect(() => {
         const fetchAirports = async () => {
-            const data = await AirportEndpointService.findAll();
+            const data = await airportService.getAllAirports();
             setAirports(data);
         }
         fetchAirports();
      },[]);
 
     const deleteAirport = async (id: string) => {
-        await AirportEndpointService.deleteById(id);
+        await airportService.deleteAirport(id);
         setAirports(airports.filter(airport => airport.id !== id));
     }
 
