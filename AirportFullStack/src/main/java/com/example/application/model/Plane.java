@@ -17,11 +17,17 @@ public class Plane {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Nonnull
     private String id;
+    @Nonnull
     private String model;
+    @Nonnull
     private String manufacturer;
+    @Nonnull
     private String registrationNumber;
+    @Nonnull
     private Integer capacity;
+    @Nonnull
     private Integer yearOfManufacture;
 
     public Plane(String model, String manufacturer, String registrationNumber, Integer capacity, Integer yearOfManufacture) {
