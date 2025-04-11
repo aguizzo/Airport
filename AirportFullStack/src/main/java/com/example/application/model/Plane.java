@@ -31,4 +31,12 @@ public class Plane {
         this.capacity = capacity;
         this.yearOfManufacture = yearOfManufacture;
     }
+
+    public static Plane fromDto(PlaneDto planeDto) {
+        return new Plane(planeDto.model(),
+                planeDto.manufacturer(),
+                planeDto.registrationNumber(),
+                planeDto.capacity(),
+                planeDto.yearOfManufacture());
+    }
 }
